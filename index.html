@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Munwar — Portfolio</title>
+  <meta name="description" content="Munwar — Frontend & Backend Developer. HTML, CSS, JS, Bootstrap, jQuery, PHP, Laravel, MySQL. Creative design & prompt engineering.">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #071022;
+      --bg2: #0b1226;
+      --glass: rgba(255,255,255,0.04);
+      --muted: #9aa4b2;
+      --accent1: #6ee7b7;
+      --accent2: #60a5fa;
+      --card-radius: 16px;
+      --max-width: 1100px;
+      --ff: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff);
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.06), transparent),
+                  radial-gradient(900px 500px at 90% 80%, rgba(110,231,183,0.04), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      margin:auto;
+    }
+
+    /* top card */
+    .hero{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+      border-radius: var(--card-radius);
+      padding:20px;
+      box-shadow: 0 10px 30px rgba(2,8,18,0.6);
+    }
+
+    /* profile */
+    .profile {
+      text-align:center;
+    }
+    .profile .avatar{
+      width:140px;height:140px;border-radius:50%;
+      margin:6px auto;
+      overflow:hidden;
+      border:3px solid rgba(110,231,183,0.15);
+      box-shadow: 0 8px 30px rgba(96,165,250,0.07), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .profile img{width:100%;height:100%;object-fit:cover;display:block}
+    .name{font-size:22px;font-weight:700;margin-top:12px}
+    .role{color:var(--muted);margin-top:6px;font-size:14px}
+
+    .download-row{display:flex;gap:10px;justify-content:center;margin-top:14px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#052026;
+      box-shadow:0 8px 30px rgba(96,165,250,0.08);
+    }
+    .outline-btn{
+      padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);text-decoration:none;font-weight:600;background:transparent;
+    }
+
+    .info-list{margin-top:16px;text-align:left;color:var(--muted);font-size:14px}
+    .info-list div{margin:8px 0;display:flex;gap:10px;align-items:center}
+
+    /* right main */
+    .main{
+      display:flex;flex-direction:column;gap:18px;
+    }
+
+    .intro{
+      display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+      flex-wrap:wrap;
+    }
+    .intro .summary{flex:1}
+    .summary h1{margin:0;font-size:24px}
+    .summary p{color:var(--muted);line-height:1.6;margin-top:8px}
+
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+          border-radius:10px;padding:8px 12px;font-weight:700;border:1px solid rgba(255,255,255,0.04);
+          color:var(--accent2);}
+
+    /* sections */
+    .section-grid{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+      align-items:start;
+    }
+
+    .skills{
+      display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;
+    }
+    .skill-pill{
+      background:linear-gradient(90deg, rgba(96,165,250,0.06), rgba(110,231,183,0.03));
+      padding:8px 12px;border-radius:10px;font-weight:700;border:1px solid rgba(255,255,255,0.03);
+      color:#eafaf6;
+    }
+
+    .experience .job{margin-bottom:14px}
+    .job h3{margin:0;font-size:16px}
+    .job p{margin:6px 0;color:var(--muted);font-size:14px;line-height:1.5}
+    .job ul{margin:6px 0 0 18px;color:var(--muted)}
+
+    /* small card right */
+    .contact-card .row{display:flex;align-items:center;gap:10px;margin:10px 0}
+    .icon{
+      width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* projects gallery (simple) */
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+    .proj{height:90px;border-radius:12px;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+          display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;border:1px solid rgba(255,255,255,0.03)}
+
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:20px}
+
+    /* responsiveness */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .section-grid{grid-template-columns:1fr}
+      .projects{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      body{padding:18px}
+      .profile .avatar{width:120px;height:120px}
+      .chips{gap:8px}
+      .proj{height:80px}
+      .projects{grid-template-columns:1fr}
+    }
+
+    /* subtle float animation for accent blob */
+    .accent-blob{position:fixed;right:-160px;top:-80px;width:420px;height:420px;border-radius:50%;
+                background:radial-gradient(circle at 30% 30%, rgba(96,165,250,0.08), rgba(110,231,183,0.04) 40%, transparent 60%);
+                filter: blur(40px);z-index:0;pointer-events:none;transform:translateZ(0);}
+    @keyframes bob {0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+    .floaty{animation:bob 6s ease-in-out infinite;}
+  </style>
+</head>
+<body>
+  <div class="accent-blob floaty" aria-hidden="true"></div>
+
+  <div class="wrap" role="main">
+    <section class="hero" aria-labelledby="profile-heading">
+      <!-- LEFT PROFILE -->
+      <aside class="card profile" aria-label="Profile card">
+        <div class="avatar" title="Munwar">
+          <!-- Replace the src with your image path -->
+          <img src="profile.png" alt="Munwar Profile Photo" onerror="this.src='https://via.placeholder.com/300?text=Profile'">
+        </div>
+        <div class="name">Munwar</div>
+        <div class="role">Frontend & Backend Developer</div>
+
+        <div class="download-row" role="region" aria-label="Download CV">
+          <a class="btn" href="CV.png" download>
+            <!-- simple download icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v9" stroke="#042026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11l4 4 4-4" stroke="#042026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 21H4" stroke="#042026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download CV
+          </a>
+          <a class="outline-btn" href="mailto:munwargaju786@gmail.com">Contact</a>
+        </div>
+
+        <div class="info-list" aria-label="Contact information">
+          <div><strong>Phone:</strong> <span style="margin-left:8px">0323 3986530</span></div>
+          <div><strong>Email:</strong> <span style="margin-left:8px">munwargaju786@gmail.com</span></div>
+          <div><strong>Location:</strong> <span style="margin-left:8px">Pakistan</span></div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div style="font-weight:700;color:var(--muted);font-size:13px;margin-bottom:8px">Tech Stack</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">jQuery</span>
+            <span class="chip">PHP</span>
+            <span class="chip">Laravel</span>
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT MAIN -->
+      <div class="main">
+        <div class="card intro" aria-labelledby="intro-heading">
+          <div class="summary">
+            <h1 id="intro-heading">Creative developer building fast, simple, and beautiful web experiences</h1>
+            <p>I am a creative person with a passion for making fast, smart, and good-looking digital work. I turn ideas into clean designs, easy-to-use pages, and strong web solutions. I have solid skills in Frontend, Backend, Prompt Engineering, and Creative Design. I enjoy making websites, banners, posters, and modern visuals that look professional.</p>
+
+            <div class="chips" aria-hidden="true">
+              <div class="chip">Frontend</div>
+              <div class="chip">Backend</div>
+              <div class="chip">Prompt Engineering</div>
+              <div class="chip">Creative Design</div>
+            </div>
+          </div>
+
+          <div style="min-width:160px;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+            <div style="background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:14px;border-radius:12px;color:#052026;font-weight:800">Available for Work</div>
+            <div style="color:var(--muted);font-size:13px;text-align:right">Open to freelance & full-time roles</div>
+          </div>
+        </div>
+
+        <div class="section-grid">
+          <div>
+            <div class="card skills" aria-labelledby="skills-heading">
+              <h2 id="skills-heading">Skills</h2>
+              <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap">
+                <span class="skill-pill">HTML</span>
+                <span class="skill-pill">CSS</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">Bootstrap</span>
+                <span class="skill-pill">jQuery</span>
+                <span class="skill-pill">PHP</span>
+                <span class="skill-pill">Laravel</span>
+                <span class="skill-pill">MySQL</span>
+                <span class="skill-pill">Prompt Engineering</span>
+                <span class="skill-pill">Canva Design</span>
+                <span class="skill-pill">Banners & Posters</span>
+              </div>
+            </div>
+
+            <div class="card experience" aria-labelledby="exp-heading" style="margin-top:14px">
+              <h2 id="exp-heading">Experience</h2>
+
+              <div class="job">
+                <h3>Frontend Developer / Designer (Freelance)</h3>
+                <p style="color:var(--muted)">Year – Present</p>
+                <ul>
+                  <li>Built responsive websites and landing pages.</li>
+                  <li>Designed banners, posters, and website graphics using Canva.</li>
+                  <li>Developed clean and user-friendly UI components.</li>
+                </ul>
+              </div>
+
+              <div class="job">
+                <h3>Backend Developer (Freelance)</h3>
+                <p style="color:var(--muted)">Year – Present</p>
+                <ul>
+                  <li>Worked with PHP and Laravel to build small web applications.</li>
+                  <li>Developed and managed MySQL databases.</li>
+                  <li>Fixed bugs and improved website performance.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:14px">
+              <h2>Projects</h2>
+              <div class="projects" aria-hidden="true">
+                <div class="proj">Portfolio Website</div>
+                <div class="proj">Business Landing Page</div>
+                <div class="proj">PHP User System</div>
+              </div>
+            </div>
+          </div>
+
+          <aside>
+            <div class="card contact-card">
+              <h2>Contact</h2>
+              <div class="row"><div class="icon">📞</div><div><strong>Phone</strong><div style="color:var(--muted)">0323 3986530</div></div></div>
+              <div class="row"><div class="icon">✉️</div><div><strong>Email</strong><div style="color:var(--muted)">munwargaju786@gmail.com</div></div></div>
+              <div class="row"><div class="icon">📍</div><div><strong>Location</strong><div style="color:var(--muted)">Pakistan</div></div></div>
+
+              <div style="margin-top:12px;display:flex;gap:8px">
+                <a class="btn" href="tel:+923233986530">Call Now</a>
+                <a class="outline-btn" href="mailto:munwargaju786@gmail.com">Email</a>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:14px">
+              <h2>Quick Links</h2>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                <a class="outline-btn" href="assets/munwar-cv.pdf" download>Download CV</a>
+                <a class="outline-btn" href="#projects">View Projects</a>
+                <a class="outline-btn" href="#skills">Skills</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Munwar — DM Production
+    </footer>
+
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
